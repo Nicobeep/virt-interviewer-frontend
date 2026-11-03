@@ -1,19 +1,16 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
-  experimental: {
-    agentFeedback: true,
-  },
-  cacheComponents: true,
-  partialPrefetching: true,
-  turbopack: {
-    rules: {
-      "*.css": {
-        loaders: ["@tailwindcss/turbopack"],
-        as: "*.css",
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: '/apps/:path*',
+        destination: 'http://localhost:8000/apps/:path*',
       },
-    },
+      {
+        source: '/run',
+        destination: 'http://localhost:8000/run',
+      },
+    ];
   },
 };
 
