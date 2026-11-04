@@ -1,4 +1,4 @@
-const API_URL = ""; // Uses Next.js rewrites proxy to bypass CORS
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 export async function createSession(userId: string = "default_user") {
   const appName = "interviewer_agent"; 
